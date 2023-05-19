@@ -14,20 +14,30 @@ const app = initializeApp(firebaseConfig)
 // Initialize Realtime Database and get a reference to the service
 const database = getDatabase(app)
 // Referencing the database and creating a table in it
-const toDoDatabase = ref(database, "toDoDatabase")
+const shopingList = ref(database, "toDoDatabase")
 
 
 const btn = document.getElementById('add-button')
 const input = document.getElementById('input-field')
+const shopingListEl = document.getElementById('shopping-list')
 
 
 
 btn.addEventListener('click', function(){
-let inputValue = input.value
-console.log(inputValue)
+addToList();
+clearInput()
+ })
 
-push(toDoDatabase, inputValue)
-})
+ function addToList(){
+let inputValue = input.value
+
+push(shopingList, inputValue)
+shopingListEl.innerHTML += `<li>${inputValue}</li>`
+ }
+
+ function clearInput(){
+    input.value = ' '
+ }
 
 
 
