@@ -1,7 +1,7 @@
 
 /* FireBase Stuff & Browser module stuff*/
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js'
-import { getDatabase, ref, push} from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js'
+import { getDatabase, ref, push, onValue} from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js'
 
 
 /* My database */
@@ -22,23 +22,33 @@ const input = document.getElementById('input-field')
 const shopingListEl = document.getElementById('shopping-list')
 
 
-
 btn.addEventListener('click', function(){
-addToList();
-clearInput()
+    let inputValue = input.value
+    
+    push(shopingList, inputValue)
+    
+    clearInputFieldEl()
+
+     })
+
+
+onValue(shopingList, function(snapshot){
+let goodsArray = Object.values(snapshot.val())
+shopingListEl.innerHTML = ""
+for (let i = 0; i < goodsArray.length; i++) {
+   
+    appendItemToShoppingListEl(goodsArray[i])
+}
  })
 
- function addToList(){
-let inputValue = input.value
 
-push(shopingList, inputValue)
-shopingListEl.innerHTML += `<li>${inputValue}</li>`
- }
+ function appendItemToShoppingListEl(itemValue) {
+    shopingListEl.innerHTML += `<li>${itemValue}</li>`
+}
 
- function clearInput(){
+ function clearInputFieldEl(){
     input.value = ' '
  }
-
 
 
 // https://github.com/Drazen-TheGRC/ToDo-Firebase-App/blob/main/index.js
