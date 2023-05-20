@@ -31,19 +31,47 @@ btn.addEventListener('click', function(){
 
      })
 
+     onValue(shopingList, function(snapshot) {
+        let goodsArray = Object.entries(snapshot.val())
+        
+        clearShoppingListEl()
+        
+        for (let i = 0; i < goodsArray.length; i++) {
+            let currentItem = goodsArray[i]
+            let currentItemID = currentItem[0]
+            let currentItemValue = currentItem[1]
+            
+            appendItemToShoppingListEl(currentItemValue)
+        }
+    })
 
-onValue(shopingList, function(snapshot){
-let goodsArray = Object.values(snapshot.val())
-shopingListEl.innerHTML = ""
-for (let i = 0; i < goodsArray.length; i++) {
+
+
+// onValue(shopingList, function(snapshot){
+// let goodsArray = Object.entries(snapshot.val())
+// shopingListEl.innerHTML = ""
+// for (let i = 0; i < goodsArray.length; i++) {
+//     let currentItem = goodsArray[i]
+//     let currentItemID = currentItem[0]
+//     let currentItemValue = currentItem[1]
    
-    appendItemToShoppingListEl(goodsArray[i])
-}
- })
+//     appendItemToShoppingListEl(currentItemValue[i])
+// }
+//  })
 
+
+function clearShoppingListEl() {
+    shopingListEl.innerHTML = ""
+}
 
  function appendItemToShoppingListEl(itemValue) {
-    shopingListEl.innerHTML += `<li>${itemValue}</li>`
+    // shopingListEl.innerHTML += `<li>${itemValue}</li>`
+
+    let newEl = document.createElement("li")
+    
+    newEl.textContent = itemValue
+    
+    shopingListEl.append(newEl)
 }
 
  function clearInputFieldEl(){

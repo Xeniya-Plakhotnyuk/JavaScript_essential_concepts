@@ -58,3 +58,23 @@ button {
 img{
     align-self: center;
 }
+
+ul {
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
+    }
+
+ul li {
+    
+    background-color: #FFFDF8;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 15px;
+    flex-grow: 1;
+    text-align: center;
+    
+}
