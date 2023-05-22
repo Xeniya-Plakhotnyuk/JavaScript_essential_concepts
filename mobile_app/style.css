@@ -11,6 +11,7 @@ body {
     padding: 0;
     font-family: 'Rubik', sans-serif;
     background-color: #dab7c8;
+    user-select: none;
    
 }
 
@@ -55,6 +56,12 @@ button {
     
 }
 
+button:hover{
+ background-color: #432000;  
+ cursor: pointer; 
+}
+
+
 img{
     align-self: center;
 }
@@ -77,4 +84,9 @@ ul li {
     flex-grow: 1;
     text-align: center;
     
+}
+
+ul li:hover {
+    background-color: #FFECC7;
+    cursor: pointer;
 }
