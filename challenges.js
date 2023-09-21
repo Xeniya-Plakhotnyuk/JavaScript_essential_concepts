@@ -1,8 +1,14 @@
 const numbers = [1,2, 3, 3, 2, 6, 8, 1, 3, 5 ]
 
-const nums = numbers.filter((value, index, arr) =>{
-  return arr.indexOf(value) === index
-})
+const max = numbers.reduce(callback, -Infinity)
 
-console.log(nums)
+function callback(accumulator, value){
+    if(accumulator > value){
+        return accumulator
+    }else{
+       return value
+    }
+}
+
+console.log(max)
 
